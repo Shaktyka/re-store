@@ -1,0 +1,27 @@
+@keyframes rotation {
+  0% {
+    transform:rotate(0deg);
+  }
+  100% {
+    transform:rotate(360deg);
+  }
+}
+
+.spinner {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: #00bc8c;
+  margin: auto;
+  animation-name: rotation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.spinner_inner {
+  width: 15px;
+  height: 15px;
+  background-color: #ffee58;
+  margin: auto;
+}

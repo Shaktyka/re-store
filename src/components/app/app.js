@@ -1,7 +1,7 @@
 import React from 'react';
 
-// import ErrorBoundary from '../error-boundary/';
-// import ErrorIndicator from '../error-indicator/';
+import ErrorBoundary from '../error-boundary/';
+import ErrorIndicator from '../error-indicator/';
 
 // import bookStoreService from '../../services/bookstore-service';
 

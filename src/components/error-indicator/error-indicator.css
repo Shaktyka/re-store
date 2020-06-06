@@ -1,0 +1,12 @@
+.error-indicator {
+  color: #FFEE58;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boom {
+  text-transform: uppercase;
+  font-weight: 700;
+}
