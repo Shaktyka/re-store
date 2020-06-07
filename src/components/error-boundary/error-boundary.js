@@ -4,7 +4,7 @@ import ErrorIndicator from '../error-indicator/';
 class ErrorBoundary extends React.Component {
   state = {
     hasError: false
-  }
+  };
 
   componentDidCatch() {
     this.setState({ hasError: true });
