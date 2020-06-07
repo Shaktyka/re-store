@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import './book-list-item';
 
 const BookListItem = ({ book }) => {
-  const { title, author, id } = book;
+  const { title, author } = book;
 
   return (
     <Fragment>
