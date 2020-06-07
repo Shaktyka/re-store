@@ -1,18 +1,20 @@
 import React from 'react';
-import './app.css';
+import { Route, Switch } from 'react-router-dom';
+import { HomePage, CartPage } from '../pages/';
 
-import withBookstoreService from '../hoc';
-// import ErrorBoundary from '../error-boundary/';
-// import ErrorIndicator from '../error-indicator/';
+import './app.css';
 
 class App extends React.Component {
 
   render() {
-    console.log(this.props.bookstoreService.getBooks());
+    // console.log(this.props.bookstoreService.getBooks());
     return (
-      <div>App</div>
+      <Switch>
+        <Route path="/" component={ HomePage } exact />
+        <Route path="/cart" component={ CartPage } />
+      </Switch>
     );
   }
 }
 
-export default withBookstoreService()(App);
+export default App;
