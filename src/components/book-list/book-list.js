@@ -15,17 +15,7 @@ import './book-list.css';
 class BookList extends React.Component {
 
   componentDidMount() {
-    // получаем данные
-    const { bookstoreService, booksLoaded, booksRequested, booksError } = this.props;
-    booksRequested();
-    bookstoreService.getBooks()
-      .then((data) => {
-        // передаём данные в стор
-        booksLoaded(data);
-      })
-      .catch((error) => {
-        booksError(error);
-      });
+    this.props.fetchBooks();
   };
 
   render() {
@@ -63,10 +53,24 @@ const mapStateToProps = ({ books, loading, error }) => {
   return { books, loading, error };
 };
 
-const mapDispatchToProps = {
-  booksLoaded,
-  booksRequested,
-  booksError,
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const {bookstoreService} = ownProps;
+
+  return {
+    fetchBooks: () => {
+      dispatch(booksRequested());
+
+      bookstoreService.getBooks()
+        .then((data) => {
+          // передаём данные в стор
+          dispatch(booksLoaded(data));
+        })
+        .catch((error) => {
+          // обрабатываем ошибку
+          dispatch(booksError(error));
+        });
+    }
+  };
 };
 
 export default compose(
