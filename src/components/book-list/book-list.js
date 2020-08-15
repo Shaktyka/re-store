@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux'; // чтобы подключиться к редакс-стору
 import withBookstoreService from '../hoc';
-import { booksLoaded, booksRequested, booksError } from '../../actions/';
+import { fetchBooks } from '../../actions/';
 import { compose } from '../../utils/';
 
 import BookListItem from '../book-list-item/';
@@ -57,19 +57,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const {bookstoreService} = ownProps;
 
   return {
-    fetchBooks: () => {
-      dispatch(booksRequested());
-
-      bookstoreService.getBooks()
-        .then((data) => {
-          // передаём данные в стор
-          dispatch(booksLoaded(data));
-        })
-        .catch((error) => {
-          // обрабатываем ошибку
-          dispatch(booksError(error));
-        });
-    }
+    fetchBooks: fetchBooks(bookstoreService, dispatch)
   };
 };
 
