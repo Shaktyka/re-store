@@ -4,7 +4,7 @@ import './book-list-item.css';
 import './book-list-item';
 
 const BookListItem = ({ book }) => {
-  const { title, author, price, coverImg } = book;
+  const { id, title, author, price, coverImg } = book;
 
   return (
     <div className="book-list-item">
@@ -12,7 +12,7 @@ const BookListItem = ({ book }) => {
         <img src={ coverImg } alt={ title } />
       </div>
       <div className="book-details">
-        <a href={`/book/${title}`} className="book-title">{ title }</a>
+        <a href={`/book/${id}`} className="book-title">{ title }</a>
         <div className="book-author">{ author }</div>
         <div className="book-price">${ price }</div>
         <button className="btn btn-info add-to-cart">Add to cart</button>
