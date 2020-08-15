@@ -12,7 +12,7 @@ const ShoppingCartTable = () => {
             <th>Item</th>
             <th>Count</th>
             <th>Price</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
 

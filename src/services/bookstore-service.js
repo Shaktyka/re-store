@@ -1,8 +1,7 @@
 // Получение данных о книгах
 export default class BookstoreService {
 
-  getBooks() {
-    return [
+  data = [
       {
         id: 1,
         title: 'Production-Ready Microservices',
@@ -27,10 +26,17 @@ export default class BookstoreService {
       {
         id: 4,
         title: 'Алгоритмы. Разработка и применение',
-        author: 'Авторы:Джон Клейнберг, Ева Тардос',
+        author: 'Джон Клейнберг, Ева Тардос',
         price: 349,
         coverImg: 'https://cv4.litres.ru/pub/c/pdf-kniga/cover_415/18305944-dzh-kleynberg-algoritmy-razrabotka-i-primenenie-18305944.jpg'
       }
     ];
+
+  getBooks() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.data);
+      }, 700);
+    });
   }
 };

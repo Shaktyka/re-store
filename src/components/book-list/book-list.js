@@ -1,10 +1,12 @@
 import React from 'react';
-import BookListItem from '../book-list-item/';
-import { connect } from 'react-redux'; // чтобы подключиться к редакс-стору
 
+import { connect } from 'react-redux'; // чтобы подключиться к редакс-стору
 import withBookstoreService from '../hoc';
 import { booksLoaded } from '../../actions/';
 import { compose } from '../../utils/';
+
+import BookListItem from '../book-list-item/';
+import Spinner from '../spinner/';
 
 import './book-list.css';
 
@@ -12,16 +14,21 @@ import './book-list.css';
 class BookList extends React.Component {
 
   componentDidMount() {
-    // получить данные
-    const { bookstoreService } = this.props;
-    const data = bookstoreService.getBooks();
-
-    // передать действия в стор
-    this.props.booksLoaded(data);
+    // получаем данные
+    const { bookstoreService, booksLoaded } = this.props;
+    bookstoreService.getBooks()
+      .then((data) => {
+        // передаём данные в стор
+        booksLoaded(data);
+      });
   };
 
   render() {
-  	const { books } = this.props;
+  	const { books, loading } = this.props;
+
+    if (loading) {
+      return <Spinner />
+    }
 
     return (
       <ul className="book-list">
@@ -43,8 +50,8 @@ class BookList extends React.Component {
   };
 };
 
-const mapStateToProps = ({ books }) => {
-  return { books };
+const mapStateToProps = ({ books, loading }) => {
+  return { books, loading };
 };
 
 const mapDispatchToProps = {
