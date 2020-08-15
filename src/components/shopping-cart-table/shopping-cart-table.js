@@ -7,7 +7,7 @@ const ShoppingCartTable = () => {
       <h2>Your Order</h2>
       <table>
         <thead>
-          <tr>
+          <tr className="t-row">
             <th>#</th>
             <th>Item</th>
             <th>Count</th>
@@ -17,12 +17,12 @@ const ShoppingCartTable = () => {
         </thead>
 
         <tbody>
-          <tr>
+          <tr className="t-row">
             <td>1</td>
             <td>Site Reliability Engeneering</td>
             <td>2</td>
             <td>40</td>
-            <td>
+            <td className="td-actions">
               <button className="btn btn-outline-warning">
                 <i className="fa fa-minus-circle" />
               </button>

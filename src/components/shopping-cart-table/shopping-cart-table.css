@@ -4,6 +4,29 @@ h2 {
 
 table {
   width: 100%;
+  margin-bottom: 10px;
+}
+
+.t-row {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  padding: 5px 0;
+  background-color: #9e9e9e57;
+}
+
+.t-row th:last-child {
+  text-align: right;
+  padding-right: 15px;
+}
+
+.td-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 7px;
 }
 
 .total {
@@ -13,6 +36,5 @@ table {
 }
 
 button {
-  margin-left: 5px;
-  margin-top: 5px;
+  margin: 0 5px;
 }
