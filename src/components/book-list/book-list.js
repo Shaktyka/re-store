@@ -25,11 +25,15 @@ class BookList extends React.Component {
     console.log(books); // пустой массив
 
     return (
-      <ul>
+      <ul className="book-list">
         {
           books.map((book) => {
             return (
-              <li key={ book.id } id={ book.id } >
+              <li
+                key={ book.id }
+                id={ book.id }
+                className="book-list-item"
+              >
                 <BookListItem book={ book } />
               </li>
             );

@@ -1,15 +1,21 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import './book-list-item';
 
 const BookListItem = ({ book }) => {
-  const { title, author } = book;
+  const { title, author, price, coverImg } = book;
 
   return (
-    <Fragment>
-      <span>{ title }</span>
-      <span>{ author }</span>
-    </Fragment>
+    <div className="book-list-item">
+      <div className="book-cover">
+        <img src={ coverImg } alt={ title } />
+      </div>
+      <div className="book-details">
+        <a href="#" className="book-title">{ title }</a>
+        <div className="book-author">{ author }</div>
+        <div className="book-price">{ price }</div>
+      </div>
+    </div>
   );
 };
 
