@@ -22,7 +22,6 @@ class BookList extends React.Component {
 
   render() {
   	const { books } = this.props;
-    console.log(books); // пустой массив
 
     return (
       <ul className="book-list">
