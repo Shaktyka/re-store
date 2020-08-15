@@ -11,8 +11,28 @@ import ErrorIndicator from '../error-indicator/';
 
 import './book-list.css';
 
+const BookList = ({books}) => {
+  return (
+    <ul className="book-list">
+      {
+        books.map((book) => {
+          return (
+            <li
+              key={ book.id }
+              id={ book.id }
+              className="book-list-item"
+            >
+              <BookListItem book={ book } />
+            </li>
+          );
+        })
+      }
+    </ul>
+  );
+};
+
 // Как только он загружается, он запрашивает данные
-class BookList extends React.Component {
+class BookListContainer extends React.Component {
 
   componentDidMount() {
     this.props.fetchBooks();
@@ -29,23 +49,7 @@ class BookList extends React.Component {
       return <ErrorIndicator />;
     }
 
-    return (
-      <ul className="book-list">
-        {
-          books.map((book) => {
-            return (
-              <li
-                key={ book.id }
-                id={ book.id }
-                className="book-list-item"
-              >
-                <BookListItem book={ book } />
-              </li>
-            );
-          })
-        }
-      </ul>
-    );
+    return <BookList books={books} />
   };
 };
 
@@ -64,4 +68,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default compose(
   withBookstoreService(),
   connect(mapStateToProps, mapDispatchToProps)
-)(BookList);
+)(BookListContainer);
