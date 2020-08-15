@@ -1,5 +1,5 @@
 .error-indicator {
-  color: #FFEE58;
+  color: red;
   font-size: 18px;
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux'; // чтобы подключиться к редакс-стору
 import withBookstoreService from '../hoc';
-import { booksLoaded } from '../../actions/';
+import { booksLoaded, booksRequested } from '../../actions/';
 import { compose } from '../../utils/';
 
 import BookListItem from '../book-list-item/';
@@ -15,7 +15,8 @@ class BookList extends React.Component {
 
   componentDidMount() {
     // получаем данные
-    const { bookstoreService, booksLoaded } = this.props;
+    const { bookstoreService, booksLoaded, booksRequested } = this.props;
+    booksRequested();
     bookstoreService.getBooks()
       .then((data) => {
         // передаём данные в стор
@@ -55,7 +56,8 @@ const mapStateToProps = ({ books, loading }) => {
 };
 
 const mapDispatchToProps = {
-  booksLoaded
+  booksLoaded,
+  booksRequested,
 };
 
 export default compose(
