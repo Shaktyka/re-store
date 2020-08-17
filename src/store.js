@@ -1,24 +1,23 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers/';
 
-const enhancer = (createStore) => (...args) => {
-  const store = createStore(...args);
+const logMiddleware = (store) => (next) => (action) => {
+  console.log(action.type);
+  return next(action);
+};
 
-  const originalDispatch = store.dispatch;
-  store.dispatch = (action) => {
-
-    if (typeof action === 'string') {
-      return originalDispatch({
+const stringMiddleware = () => (next) => (action) => {
+  if (typeof action === 'string') {
+      return next({
         type: action
       });
     }
 
-    return originalDispatch(action);
-  };
-
-  return store;
+    return next(action);
 };
 
-const store = createStore(reducer, enhancer);
+const store = createStore(reducer, applyMiddleware(stringMiddleware, logMiddleware));
+
+// store.dispatch('HELLO_WORLD');
 
 export default store;
