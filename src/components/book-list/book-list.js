@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { connect } from 'react-redux'; // чтобы подключиться к редакс-стору
+import { connect } from 'react-redux';
 import withBookstoreService from '../hoc';
 import { fetchBooks, bookAddedToCart } from '../../actions/';
 import { compose } from '../../utils/';

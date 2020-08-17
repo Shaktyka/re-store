@@ -1,24 +1,31 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+
 import ShopHeader from '../shop-header';
 import { HomePage, CartPage } from '../pages/';
 
 import './app.css';
 
-class App extends React.Component {
+const App = (props) => {
+  const {orderTotal, cartItems} = props;
+  const itemsAmount = cartItems.reduce((acc, item) => acc + item.count, 0);
 
-  render() {
-    // console.log(this.props.bookstoreService.getBooks());
-    return (
-      <main role="main" className="container">
-        <ShopHeader numberItems={5} total={210} />
-        <Switch>
-          <Route path="/" component={ HomePage } exact />
-          <Route path="/cart" component={ CartPage } />
-        </Switch>
-      </main>
-    );
-  }
+  return (
+    <main role="main" className="container">
+      <ShopHeader itemsAmount={itemsAmount} total={orderTotal} />
+      <Switch>
+        <Route path="/" component={ HomePage } exact />
+        <Route path="/cart" component={ CartPage } />
+      </Switch>
+    </main>
+  );
 }
 
-export default App;
+const mapStateToProps = ({shoppingCart}) => {
+  const { orderTotal, cartItems } = shoppingCart;
+  return { orderTotal, cartItems };
+};
+
+export default connect(mapStateToProps)(App);

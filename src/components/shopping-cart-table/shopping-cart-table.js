@@ -8,6 +8,10 @@ import './shopping-cart-table.css';
 const ShoppingCartTable = (props) => {
   const {items, total, onIncrease, onDecrease, onDelete} = props;
 
+  const totalSum = items.reduce((acc, item) => {
+    return acc + item.total;
+  }, 0);
+
   const renderRow = (item, i) => {
     return (
       <tr className="t-row" key={item.id}>
@@ -61,7 +65,7 @@ const ShoppingCartTable = (props) => {
       </table>
 
       <div className="total">
-        Total: ${total}
+        Total: ${totalSum}
       </div>
     </div>
   );
