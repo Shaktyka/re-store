@@ -1,5 +1,18 @@
-h2 {
+.cart-header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cart-header {
   margin-bottom: 20px;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 1.3rem;
+  margin-right: 10px;
 }
 
 table {
@@ -27,12 +40,6 @@ th {
   justify-content: flex-end;
   align-items: center;
   padding: 7px;
-}
-
-.total {
-  text-align: right;
-  font-size: 1.3rem;
-  margin-right: 10px;
 }
 
 button {

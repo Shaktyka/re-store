@@ -40,8 +40,14 @@ const ShoppingCartTable = (props) => {
   };
 
   return (
-    <div className="shopping-cart-table">
-      <h2>Your Order</h2>
+    <div className="cart">
+      <div className="cart-header-wrap">
+        <h2 className="cart-header">Your Order</h2>
+        <span className="cart-total">
+          Total: $<b>{total}</b>
+        </span>
+      </div>
+
       <table>
         <thead>
           <tr className="t-row">
@@ -59,10 +65,6 @@ const ShoppingCartTable = (props) => {
           }
         </tbody>
       </table>
-
-      <div className="total">
-        Total: ${total}
-      </div>
     </div>
   );
 };

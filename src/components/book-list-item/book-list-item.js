@@ -4,8 +4,16 @@ import {Link} from 'react-router-dom';
 
 import './book-list-item.css';
 
+const MAX_STRING_LENGTH = 39;
+
 const BookListItem = ({ book, onAddedToCart }) => {
   const { id, title, author, price, coverImg } = book;
+
+  const croppedTitle = title.length > MAX_STRING_LENGTH
+   ?
+   title.slice(0, MAX_STRING_LENGTH + 1) + `...`
+   :
+   title;
 
   return (
     <div className="book-list-item">
@@ -13,7 +21,11 @@ const BookListItem = ({ book, onAddedToCart }) => {
         <img src={ coverImg } alt={ title } />
       </div>
       <div className="book-details">
-        <Link to={`/book/${id}`} className="book-title">{ title }</Link>
+        <Link
+          to={`/book/${id}`}
+          className="book-title"
+          title={title}
+        >{croppedTitle}</Link>
 
         <div className="book-author">{author}</div>
 

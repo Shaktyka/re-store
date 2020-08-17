@@ -13,7 +13,7 @@ const App = (props) => {
   const itemsAmount = cartItems.reduce((acc, item) => acc + item.count, 0);
 
   return (
-    <main role="main" className="container">
+    <main role="main" className="main container">
       <ShopHeader itemsAmount={itemsAmount} total={orderTotal} />
       <Switch>
         <Route path="/" component={ HomePage } exact />
